@@ -1,0 +1,5 @@
+spring:
+  cloud:
+    config:
+      name: crawlingapi
+      uri: http://localhost:8012

@@ -1,0 +1,51 @@
+
+server:
+  port: 10006
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+#spring:
+#  datasource:
+#    url: jdbc:h2:~/data/eatgo
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#
+#---
+#
+#spring:
+#  profiles: test
+#  datasource:
+#    url: jdbc:h2:mem:test
+#
+#---
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/microservicedb?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: mysql
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      format_sql: true
+      ddl-auto: create
+
+
+  http:
+  application:
+    name: crawlingapi
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8010/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
